@@ -230,6 +230,11 @@ nav ul a:hover{color:var(--gold);}
 .svc li span{font-family:'Cormorant Garamond',serif;font-size:.72rem;color:var(--text-dim);}
 .svc li:last-child{border-bottom:1px solid var(--surface2);}
 
+/* MASCOT */
+.mascot-container{margin-top:80px;display:flex;justify-content:center;align-items:center;}
+.mascot{max-width:500px;width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(201,168,76,0.15)) contrast(1.02);image-rendering:smooth;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,0.7) 80%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,1) 55%,rgba(0,0,0,0.7) 80%,rgba(0,0,0,0) 100%);}
+.mascot:hover{}
+
 /* PORTFOLIO */
 .port{padding:130px 60px;background:rgba(5,5,5,.7);}
 .portdark{padding:130px 60px;background:rgba(8,7,4,.78);}
@@ -362,7 +367,10 @@ nav ul a:hover{color:var(--gold);}
 .success-message.visible ~ .modal-header{display:none;}
 
 /* PRICING HERO */
-.pricing-hero{padding:130px 60px;background:rgba(5,5,5,.75);}
+.pricing-hero{padding:130px 60px;background:rgba(5,5,5,.75);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.pricing-content{display:flex;flex-direction:column;}
+.pricing-mascot-container{display:flex;justify-content:center;align-items:center;padding:40px;}
+.pricing-mascot{max-width:100%;height:auto;width:clamp(200px,100%,500px);filter:drop-shadow(0 20px 40px rgba(201,168,76,0.15));}
 .pricing-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.3rem,4.5vw,4rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:20px;}
 .pricing-heading em{font-style:italic;color:var(--gold);}
 .pricing-desc{font-size:1rem;line-height:1.82;color:var(--text-dim);max-width:700px;margin-bottom:42px;}
@@ -423,6 +431,9 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 @media(max-width:900px){
   nav{padding:18px 24px;}
   .hero,.about,.port,.portdark,.proc,.contact,.pricing-hero{padding-left:24px;padding-right:24px;}
+  .pricing-hero{grid-template-columns:1fr;gap:40px;}
+  .pricing-mascot-container{padding:20px;}
+  .pricing-mascot{width:clamp(150px,80vw,400px);}
   .cta-refined{font-size:1.05rem;padding:20px 48px;letter-spacing:.16em;}
   .about{grid-template-columns:1fr;gap:44px;}
   .vg,.ug{grid-template-columns:1fr 1fr;}
@@ -609,6 +620,9 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
       <li>SaaS / App UI Motion <span>Product</span></li>
       <li>Animated Branding Kits <span>Package</span></li>
     </ul>
+    <div class="mascot-container">
+      <img src="./about_me_mascot.png" alt="Manimation Mascot" class="mascot"/>
+    </div>
   </div>
 </section>
 
@@ -899,10 +913,15 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 <div class="divider"></div>
 
 <section class="pricing-hero" id="pricing">
-  <div class="slabel">Investment</div>
-  <h2 class="pricing-heading">Simple <em>Pricing</em>, Great Results</h2>
-  <p class="pricing-desc">Transparent project-based pricing. Each video is crafted with care — no hidden fees, no surprises. Perfect for startups, creators, and brands looking for professional motion design without breaking the budget.</p>
-  <button class="pricing-cta" onclick="window.open('pricing_test.html', '_blank')">View Pricing Details →</button>
+  <div class="pricing-content">
+    <div class="slabel">Investment</div>
+    <h2 class="pricing-heading">Simple <em>Pricing</em>, Great Results</h2>
+    <p class="pricing-desc">Transparent project-based pricing. Each video is crafted with care — no hidden fees, no surprises. Perfect for startups, creators, and brands looking for professional motion design without breaking the budget.</p>
+    <button class="pricing-cta" onclick="window.open('pricing_test.html', '_blank')">View Pricing Details →</button>
+  </div>
+  <div class="pricing-mascot-container">
+    <img src="./happy_mascot_final.png" alt="Happy Mascot" class="pricing-mascot"/>
+  </div>
 </section>
 
 <div class="divider"></div>

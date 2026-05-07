@@ -61,7 +61,7 @@ section{padding:100px 60px;position:relative;z-index:1;}
 section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:300;margin-bottom:24px;line-height:1.2;}
 section h2 em{color:var(--gold);font-style:italic;}
 .section-subtitle{font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:40px;display:block;}
-.section-desc{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1.8;color:var(--text);margin-bottom:60px;max-width:800px;}
+.section-desc{font-family:'Cormorant Garamond',serif;font-size:1.4rem;line-height:1.8;color:var(--text);margin-bottom:60px;max-width:800px;}
 
 /* DIVIDER */
 .divider{width:100%;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin:80px 0;}
@@ -72,7 +72,7 @@ section h2 em{color:var(--gold);font-style:italic;}
 .cat-text h3{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.2;margin-bottom:20px;}
 .cat-text h3 em{color:var(--gold);}
 .cat-label{font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px;display:block;}
-.cat-desc{font-family:'Cormorant Garamond',serif;font-size:1.15rem;line-height:1.8;color:var(--text-dim);margin-bottom:24px;}
+.cat-desc{font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.8;color:var(--text-dim);margin-bottom:24px;}
 .cat-features{list-style:none;}
 .cat-features li{font-size:1.05rem;padding:8px 0;color:var(--text);display:flex;align-items:flex-start;gap:12px;}
 .cat-features li::before{content:'✦';color:var(--gold);font-weight:bold;min-width:16px;}
@@ -87,7 +87,7 @@ section h2 em{color:var(--gold);font-style:italic;}
 .example-content{padding:32px;}
 .example-brand{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .example-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:12px;color:var(--white);}
-.example-details{font-size:1rem;color:var(--text-dim);line-height:1.6;margin-bottom:16px;}
+.example-details{font-size:1.15rem;color:var(--text-dim);line-height:1.6;margin-bottom:16px;}
 .example-results{display:flex;flex-direction:column;gap:8px;}
 .result-item{display:flex;justify-content:space-between;font-size:1rem;padding:8px 0;border-top:1px solid var(--surface2);padding-top:8px;}
 .result-item strong{color:var(--gold);}
@@ -101,11 +101,18 @@ section h2 em{color:var(--gold);font-style:italic;}
 /* EXPERT INSIGHT */
 .insight{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(120,80,20,.03));border-left:3px solid var(--gold);padding:32px;margin:60px 0;border-radius:2px;}
 .insight-label{font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.insight-text{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;line-height:1.8;color:var(--text);}
+.insight-text{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;line-height:1.8;color:var(--text);}
+
+/* IMPACT SECTION */
+#impact{display:flex;flex-direction:column;}
+#impact-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+#impact-text{flex:1;}
+.impact-mascot-container{display:flex;justify-content:center;align-items:center;padding:40px;}
+.impact-mascot{max-width:100%;height:auto;width:clamp(200px,100%,500px);filter:drop-shadow(0 20px 40px rgba(201,168,76,0.15));}
 
 /* STATS SECTION */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin:80px 0;}
-.stat{text-align:center;}
+.stats-grid{display:flex;gap:40px;margin:80px 0;justify-content:space-between;flex-wrap:nowrap;}
+.stat{flex:1;text-align:center;min-width:150px;}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);margin-bottom:8px;}
 .stat-label{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);}
 
@@ -160,12 +167,15 @@ footer{padding:60px;text-align:center;color:var(--text-dim);font-size:.95rem;let
   .hdesc{font-size:1.3rem;}
   
   section{padding:60px 30px;}
+  #impact-content{grid-template-columns:1fr;gap:40px;}
+  .impact-mascot-container{padding:20px;}
+  .impact-mascot{width:clamp(150px,80vw,400px);}
   .category{padding:60px 30px;}
   
   .category-header{grid-template-columns:1fr;gap:40px;}
   .examples-grid{grid-template-columns:1fr;}
   
-  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-grid{flex-wrap:wrap;}
   
   .cta-section{padding:60px 30px;}
 }
@@ -239,10 +249,18 @@ footer{padding:60px;text-align:center;color:var(--text-dim);font-size:.95rem;let
 
 <!-- IMPACT OVERVIEW -->
 <section id="impact">
-  <h2>Why <em>Motion Matters</em></h2>
-  <span class="section-subtitle">The Numbers Behind the Strategy</span>
-  
-  <p class="section-desc">Motion design directly impacts measurable business outcomes. From increased engagement to higher conversion rates, animated content outperforms static assets consistently across every industry and platform.</p>
+  <div id="impact-content">
+    <div id="impact-text">
+      <h2>Why <em>Motion Matters</em></h2>
+      <span class="section-subtitle">The Numbers Behind the Strategy</span>
+      
+      <p class="section-desc">Motion design directly impacts measurable business outcomes. From increased engagement to higher conversion rates, animated content outperforms static assets consistently across every industry and platform.</p>
+    </div>
+    
+    <div class="impact-mascot-container">
+      <img src="./thinking_mascot_final.png" alt="Thinking Mascot" class="impact-mascot"/>
+    </div>
+  </div>
   
   <div class="stats-grid">
     <div class="stat">
