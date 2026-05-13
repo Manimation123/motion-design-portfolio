@@ -68,7 +68,7 @@ export default async function handler(req, res) {
         <h2>Thank you for reaching out!</h2>
         <p>Hi ${name},</p>
         <p>I've received your project request and will get back to you within 24 hours with more details.</p>
-        <p>Best regards,<br/>Malek Bouzgarrou<br/>Motion Design Studio</p>
+        <p>Best regards,<br/>Motion Design Studio</p>
       `,
     });
 

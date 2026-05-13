@@ -1,4 +1,4 @@
-# Malek Bouzgarrou — Motion Design Portfolio
+# Manimation — Motion Design Portfolio
 
 ## Project Overview
 A dark-themed, cinematic motion design portfolio showcasing logo animations, UI/UX motion, explainer videos, and viral social media content. Built as a single-file HTML portfolio with embedded CSS and vanilla JavaScript.
