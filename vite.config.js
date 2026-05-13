@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         'motion-design-case-studies': resolve(__dirname, 'motion-design-case-studies.html'),
+        pricing: resolve(__dirname, 'pricing_test.html'),
       },
     },
   },
