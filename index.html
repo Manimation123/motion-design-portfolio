@@ -1139,35 +1139,20 @@ if(freePackButton){freePackButton.addEventListener('click',async function(event)
   if(action){action.textContent='Preparing';}
 
   try{
-    // Fetch the file from the public directory
-    var response = await fetch('/manimation-free-motion-pack.zip', { cache: 'no-store' });
-    if(!response.ok) throw new Error('File not found');
+    // Direct link to your Google Drive folder
+    var downloadUrl = 'https://drive.google.com/drive/folders/12sR10hb7yYEg8NnGy6ga5YLZBtXBHrFE?usp=drive_link';
 
-    var blob = await response.blob();
-
-    // Binary Signature Check: ZIP files must start with 'PK' (0x50, 0x4B)
-    var signatureBuffer = await blob.slice(0, 2).arrayBuffer();
-    var signatureView = new Uint8Array(signatureBuffer);
-    if (signatureView[0] !== 0x50 || signatureView[1] !== 0x4B) {
-      throw new Error('The server returned an invalid file (likely an HTML fallback).');
-    }
-
-    var url = window.URL.createObjectURL(blob);
-    await new Promise(function(r){setTimeout(r,600);});
+    await new Promise(function(r){setTimeout(r,800);}); // Brief delay for UX effect
 
     if(action){action.textContent='Ready';}
-    var link=document.createElement('a');
-    link.href=url;
-    link.download='manimation-free-motion-pack.zip';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    window.URL.revokeObjectURL(url);
+    
+    // Open the download in a new tab
+    window.open(downloadUrl, '_blank');
 
     setTimeout(function(){if(action){action.textContent=originalText;}},1600);
   }catch(error){
     console.error('Download failed:', error);
-    alert('The asset pack is currently being synced to the server. Please try again in a few minutes!');
+    alert('There was an issue opening the download folder. Please try again or contact me directly.');
     if(action){action.textContent=originalText;}
   }finally{
     freePackButton.style.pointerEvents='';
