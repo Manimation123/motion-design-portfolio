@@ -100,10 +100,8 @@ nav ul a:hover{color:var(--gold);}
 
 /* Free Pack Download */
 .free-pack-cta{position:absolute;top:86px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;padding:12px 16px 12px 18px;border:1px solid rgba(201,168,76,.36);background:linear-gradient(135deg,rgba(20,20,20,.92),rgba(10,8,5,.82));box-shadow:0 14px 42px rgba(0,0,0,.32),0 0 28px rgba(201,168,76,.08);text-decoration:none;color:var(--text);z-index:5;transition:all .35s cubic-bezier(.25,.46,.45,.94);}
-.free-pack-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,168,76,.12),transparent);opacity:0;transform:translateX(-28%);transition:opacity .35s,transform .55s;pointer-events:none;}
 .free-pack-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.1),rgba(201,168,76,0.2),rgba(201,168,76,0.1),transparent);background-size:200% 100%;animation:shimmer 3s infinite linear;opacity:0;transition:opacity .35s;pointer-events:none;}
 .free-pack-cta:hover{border-color:var(--gold);transform:translateX(-50%) translateY(-2px);box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 34px rgba(201,168,76,.14);}
-.free-pack-cta:hover::before{opacity:1;transform:translateX(28%);}
 .free-pack-cta:hover::before{opacity:1;}
 .free-pack-mark{width:34px;height:34px;border:1px solid rgba(201,168,76,.45);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;flex-shrink:0;background:rgba(201,168,76,.06);}
 .free-pack-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap;}
@@ -447,7 +445,6 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
   .pricing-hero{grid-template-columns:1fr;gap:40px;}
   .pricing-mascot-container{padding:20px;}
   .pricing-mascot{width:clamp(150px,80vw,400px);}
-  .free-pack-cta{top:86px;}
   .cta-refined{font-size:1.05rem;padding:20px 48px;letter-spacing:.16em;}
   .about{grid-template-columns:1fr;gap:44px;}
   .vg,.ug{grid-template-columns:1fr 1fr;}
@@ -1138,31 +1135,29 @@ if(freePackButton){freePackButton.addEventListener('click',async function(event)
   var action=freePackButton.querySelector('.free-pack-action');
   var originalText=action?action.textContent:'Download';
   
-  // Point this to your actual combined ZIP file
-  var downloadUrl = './manimation-free-motion-pack.zip';
-
   freePackButton.style.pointerEvents='none';
   if(action){action.textContent='Preparing';}
 
   try{
-    if(action){action.textContent='Loading';}
-    var response = await fetch(downloadUrl);
-    if(!response.ok) throw new Error('File not found');
+    // Pre-flight check: Verify the file actually exists to prevent corrupt HTML-as-ZIP downloads
+    var check = await fetch('./manimation-free-motion-pack.zip', { method: 'HEAD' });
+    if(!check.ok) throw new Error('File not found');
 
-    var blob = await response.blob();
-    var url=URL.createObjectURL(blob);
+    // Slight delay for the "premium" feel of preparation
+    await new Promise(resolve => setTimeout(resolve, 800));
+    if(action){action.textContent='Ready';}
+
     var link=document.createElement('a');
-    link.href=url;
-    link.download='manimation-motion-assets-pack.zip';
+    link.href='./manimation-free-motion-pack.zip';
+    link.download='manimation-free-motion-pack.zip';
     document.body.appendChild(link);
     link.click();
     link.remove();
-    URL.revokeObjectURL(url);
-    if(action){action.textContent='Ready';}
+    
     setTimeout(function(){if(action){action.textContent=originalText;}},1600);
   }catch(error){
-    console.error('Download error:', error);
-    alert('The asset pack is currently being updated. Please try again in a few minutes or contact me directly!');
+    console.error('Download verification failed:', error);
+    alert('The asset pack is currently being synchronized. Please try again in a few seconds or contact me directly!');
     if(action){action.textContent=originalText;}
   }finally{
     freePackButton.style.pointerEvents='';
