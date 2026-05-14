@@ -1139,25 +1139,29 @@ if(freePackButton){freePackButton.addEventListener('click',async function(event)
   if(action){action.textContent='Preparing';}
 
   try{
-    // Pre-flight check: Verify the file actually exists to prevent corrupt HTML-as-ZIP downloads
-    var check = await fetch('./manimation-free-motion-pack.zip', { method: 'HEAD' });
-    if(!check.ok) throw new Error('File not found');
+    // Enhanced pre-flight: Ensure we aren't accidentally downloading an HTML error page
+    var check = await fetch('./manimation-free-motion-pack.zip');
+    if(!check.ok) throw new Error('Not Found');
+    
+    // Check if the server returned HTML (which happens with SPA fallbacks/404s)
+    var ct = check.headers.get('content-type');
+    if(ct && ct.includes('text/html')) throw new Error('Invalid content type');
 
-    // Slight delay for the "premium" feel of preparation
-    await new Promise(resolve => setTimeout(resolve, 800));
+    // Premium preparation feel
+    await new Promise(function(r){setTimeout(r,800);});
     if(action){action.textContent='Ready';}
 
     var link=document.createElement('a');
     link.href='./manimation-free-motion-pack.zip';
-    link.download='manimation-free-motion-pack.zip';
+    link.setAttribute('download', 'manimation-free-motion-pack.zip');
     document.body.appendChild(link);
     link.click();
     link.remove();
     
     setTimeout(function(){if(action){action.textContent=originalText;}},1600);
   }catch(error){
-    console.error('Download verification failed:', error);
-    alert('The asset pack is currently being synchronized. Please try again in a few seconds or contact me directly!');
+    console.error('Download failed:', error);
+    alert('The asset pack is currently being updated on the server. Please try again in a few minutes or contact me directly via the form below.');
     if(action){action.textContent=originalText;}
   }finally{
     freePackButton.style.pointerEvents='';
