@@ -67,8 +67,53 @@ nav ul a:hover{color:var(--gold);}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 60px;overflow:hidden;background:linear-gradient(120deg,rgba(5,5,5,.88),rgba(5,5,5,.52));position:relative;}
+/* Hero section styling */
 .hgrid{position:absolute;inset:0;pointer-events:none;}
 .hgrid line{stroke:var(--gold);stroke-width:.4;opacity:.04;}
+
+/* Large hero background orbs - behind logo */
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;}
+.hero-orb-1{width:80px;height:80px;top:20%;left:35%;background:radial-gradient(circle at 30% 30%,rgba(255,200,80,.8),rgba(201,168,76,.4),transparent);animation:floatOrb1 20s ease-in-out infinite;box-shadow:0 0 30px rgba(201,168,76,.5);}
+.hero-orb-2{width:60px;height:60px;top:35%;left:50%;background:radial-gradient(circle at 30% 30%,rgba(230,180,60,.7),rgba(201,168,76,.3),transparent);animation:floatOrb2 25s ease-in-out infinite;box-shadow:0 0 25px rgba(201,168,76,.4);}
+.hero-orb-3{width:100px;height:100px;top:55%;left:28%;background:radial-gradient(circle at 30% 30%,rgba(220,160,40,.6),rgba(160,120,60,.2),transparent);animation:floatOrb3 28s ease-in-out infinite;box-shadow:0 0 35px rgba(201,168,76,.35);}
+.hero-orb-4{width:45px;height:45px;top:25%;left:60%;background:radial-gradient(circle at 30% 30%,rgba(240,190,90,.75),rgba(201,168,76,.35),transparent);animation:floatOrb4 22s ease-in-out infinite;box-shadow:0 0 20px rgba(201,168,76,.45);}
+.hero-orb-5{width:70px;height:70px;top:45%;left:42%;background:radial-gradient(circle at 30% 30%,rgba(210,170,70,.65),rgba(180,140,50,.25),transparent);animation:floatOrb5 26s ease-in-out infinite;box-shadow:0 0 28px rgba(201,168,76,.4);}
+.hero-orb-6{width:55px;height:55px;top:65%;left:55%;background:radial-gradient(circle at 30% 30%,rgba(225,175,55,.7),rgba(200,150,40,.3),transparent);animation:floatOrb6 24s ease-in-out infinite;box-shadow:0 0 23px rgba(201,168,76,.38);}
+.hero-orb-7{width:90px;height:90px;top:15%;left:45%;background:radial-gradient(circle at 30% 30%,rgba(200,160,60,.55),rgba(150,110,40,.15),transparent);animation:floatOrb7 30s ease-in-out infinite;box-shadow:0 0 32px rgba(201,168,76,.3);}
+.hero-orb-8{width:65px;height:65px;top:30%;left:20%;background:radial-gradient(circle at 30% 30%,rgba(245,185,75,.7),rgba(210,160,50,.35),transparent);animation:floatOrb8 23s ease-in-out infinite;box-shadow:0 0 27px rgba(201,168,76,.42);}
+.hero-orb-9{width:50px;height:50px;top:50%;left:70%;background:radial-gradient(circle at 30% 30%,rgba(220,170,60,.65),rgba(190,145,40,.3),transparent);animation:floatOrb9 27s ease-in-out infinite;box-shadow:0 0 22px rgba(201,168,76,.36);}
+.hero-orb-10{width:75px;height:75px;top:40%;left:15%;background:radial-gradient(circle at 30% 30%,rgba(235,180,70,.6),rgba(200,150,45,.25),transparent);animation:floatOrb10 29s ease-in-out infinite;box-shadow:0 0 29px rgba(201,168,76,.38);}
+.hero-orb-11{width:55px;height:55px;top:70%;left:40%;background:radial-gradient(circle at 30% 30%,rgba(240,190,80,.75),rgba(210,160,55,.35),transparent);animation:floatOrb11 21s ease-in-out infinite;box-shadow:0 0 24px rgba(201,168,76,.4);}
+.hero-orb-12{width:85px;height:85px;top:15%;left:70%;background:radial-gradient(circle at 30% 30%,rgba(210,165,65,.55),rgba(170,130,50,.2),transparent);animation:floatOrb12 26s ease-in-out infinite;box-shadow:0 0 31px rgba(201,168,76,.32);}
+.hero-orb-13{width:48px;height:48px;top:60%;left:65%;background:radial-gradient(circle at 30% 30%,rgba(255,195,85,.8),rgba(220,165,60,.4),transparent);animation:floatOrb13 24s ease-in-out infinite;box-shadow:0 0 21px rgba(201,168,76,.44);}
+.hero-orb-14{width:70px;height:70px;top:25%;left:75%;background:radial-gradient(circle at 30% 30%,rgba(225,175,55,.65),rgba(190,145,40,.28),transparent);animation:floatOrb14 28s ease-in-out infinite;box-shadow:0 0 26px rgba(201,168,76,.37);}
+.hero-orb-15{width:58px;height:58px;top:35%;left:5%;background:radial-gradient(circle at 30% 30%,rgba(240,185,70,.68),rgba(205,155,45,.32),transparent);animation:floatOrb15 25s ease-in-out infinite;box-shadow:0 0 25px rgba(201,168,76,.39);}
+.hero-orb-16{width:72px;height:72px;top:55%;left:90%;background:radial-gradient(circle at 30% 30%,rgba(215,165,60,.62),rgba(175,130,40,.26),transparent);animation:floatOrb16 27s ease-in-out infinite;box-shadow:0 0 28px rgba(201,168,76,.36);}
+.hero-orb-17{width:52px;height:52px;top:20%;left:88%;background:radial-gradient(circle at 30% 30%,rgba(250,195,85,.75),rgba(215,160,55,.38),transparent);animation:floatOrb17 23s ease-in-out infinite;box-shadow:0 0 23px rgba(201,168,76,.41);}
+.hero-orb-18{width:68px;height:68px;top:45%;left:8%;background:radial-gradient(circle at 30% 30%,rgba(225,170,65,.66),rgba(190,140,45,.29),transparent);animation:floatOrb18 28s ease-in-out infinite;box-shadow:0 0 27px rgba(201,168,76,.37);}
+.hero-orb-19{width:62px;height:62px;top:70%;left:82%;background:radial-gradient(circle at 30% 30%,rgba(235,180,70,.7),rgba(200,150,50,.33),transparent);animation:floatOrb19 26s ease-in-out infinite;box-shadow:0 0 26px rgba(201,168,76,.38);}
+.hero-orb-20{width:78px;height:78px;top:30%;left:92%;background:radial-gradient(circle at 30% 30%,rgba(220,170,60,.58),rgba(180,135,45,.24),transparent);animation:floatOrb20 29s ease-in-out infinite;box-shadow:0 0 30px rgba(201,168,76,.35);}
+@keyframes floatOrb1{0%{transform:translate(0,0);opacity:.7;}50%{transform:translate(-55px,70px);opacity:.5;}100%{transform:translate(0,0);opacity:.7;}}
+@keyframes floatOrb2{0%{transform:translate(0,0);opacity:.6;}50%{transform:translate(50px,-65px);opacity:.45;}100%{transform:translate(0,0);opacity:.6;}}
+@keyframes floatOrb3{0%{transform:translate(0,0);opacity:.5;}50%{transform:translate(-60px,75px);opacity:.4;}100%{transform:translate(0,0);opacity:.5;}}
+@keyframes floatOrb4{0%{transform:translate(0,0);opacity:.65;}50%{transform:translate(65px,-60px);opacity:.5;}100%{transform:translate(0,0);opacity:.65;}}
+@keyframes floatOrb5{0%{transform:translate(0,0);opacity:.6;}50%{transform:translate(-50px,65px);opacity:.45;}100%{transform:translate(0,0);opacity:.6;}}
+@keyframes floatOrb6{0%{transform:translate(0,0);opacity:.55;}50%{transform:translate(55px,-55px);opacity:.4;}100%{transform:translate(0,0);opacity:.55;}}
+@keyframes floatOrb7{0%{transform:translate(0,0);opacity:.45;}50%{transform:translate(-70px,60px);opacity:.3;}100%{transform:translate(0,0);opacity:.45;}}
+@keyframes floatOrb8{0%{transform:translate(0,0);opacity:.62;}50%{transform:translate(-65px,-70px);opacity:.48;}100%{transform:translate(0,0);opacity:.62;}}
+@keyframes floatOrb9{0%{transform:translate(0,0);opacity:.58;}50%{transform:translate(70px,55px);opacity:.42;}100%{transform:translate(0,0);opacity:.58;}}
+@keyframes floatOrb10{0%{transform:translate(0,0);opacity:.52;}50%{transform:translate(-60px,80px);opacity:.38;}100%{transform:translate(0,0);opacity:.52;}}
+@keyframes floatOrb11{0%{transform:translate(0,0);opacity:.64;}50%{transform:translate(58px,-68px);opacity:.49;}100%{transform:translate(0,0);opacity:.64;}}
+@keyframes floatOrb12{0%{transform:translate(0,0);opacity:.48;}50%{transform:translate(-75px,50px);opacity:.35;}100%{transform:translate(0,0);opacity:.48;}}
+@keyframes floatOrb13{0%{transform:translate(0,0);opacity:.68;}50%{transform:translate(62px,-62px);opacity:.52;}100%{transform:translate(0,0);opacity:.68;}}
+@keyframes floatOrb14{0%{transform:translate(0,0);opacity:.56;}50%{transform:translate(-68px,72px);opacity:.41;}100%{transform:translate(0,0);opacity:.56;}}
+@keyframes floatOrb15{0%{transform:translate(0,0);opacity:.60;}50%{transform:translate(-75px,-58px);opacity:.45;}100%{transform:translate(0,0);opacity:.60;}}
+@keyframes floatOrb16{0%{transform:translate(0,0);opacity:.54;}50%{transform:translate(78px,65px);opacity:.40;}100%{transform:translate(0,0);opacity:.54;}}
+@keyframes floatOrb17{0%{transform:translate(0,0);opacity:.66;}50%{transform:translate(72px,-70px);opacity:.51;}100%{transform:translate(0,0);opacity:.66;}}
+@keyframes floatOrb18{0%{transform:translate(0,0);opacity:.57;}50%{transform:translate(-80px,60px);opacity:.42;}100%{transform:translate(0,0);opacity:.57;}}
+@keyframes floatOrb19{0%{transform:translate(0,0);opacity:.61;}50%{transform:translate(65px,-58px);opacity:.46;}100%{transform:translate(0,0);opacity:.61;}}
+@keyframes floatOrb20{0%{transform:translate(0,0);opacity:.50;}50%{transform:translate(-72px,75px);opacity:.36;}100%{transform:translate(0,0);opacity:.50;}}
+
 .hname{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:.92;color:var(--white);margin-bottom:8px;opacity:0;animation:fadeUp .9s .2s forwards;position:relative;}
 .hname em{font-style:italic;color:var(--gold);}
 .hsub{font-size:clamp(.72rem,1.3vw,.9rem);letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);margin-top:24px;margin-bottom:28px;opacity:0;animation:fadeUp .9s .4s forwards;position:relative;}
@@ -218,6 +263,7 @@ nav ul a:hover{color:var(--gold);}
 .ahead{font-family:'Cormorant Garamond',serif;font-size:clamp(2.3rem,4.5vw,4rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:34px;}
 .ahead em{font-style:italic;color:var(--gold);}
 .abody{font-size:1rem;line-height:1.9;color:var(--text-dim);max-width:480px;margin-bottom:22px;}
+.gold-highlight{color:var(--gold);font-weight:500;}
 .pills{display:flex;flex-wrap:wrap;gap:7px;margin:24px 0 36px;}
 .ptag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:6px 12px;transition:background .3s;}
 .ptag:hover{background:rgba(201,168,76,.08);}
@@ -421,10 +467,8 @@ nav ul a:hover{color:var(--gold);}
 
 
 /* FOOTER */
-footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,5,.93);}
 footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justify-content:center;align-items:center;background:rgba(5,5,5,.93);text-align:center;}
 .flogo{font-family:'Cormorant Garamond',serif;font-size:.86rem;letter-spacing:.27em;text-transform:uppercase;color:var(--gold);}
-.fcopy{font-size:.6rem;letter-spacing:.13em;color:var(--text-dim);}
 .fcopy{font-size:.85rem;letter-spacing:.13em;color:var(--text-dim);}
 .fsoc{display:flex;gap:22px;}
 .fsoc a{font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .3s;}
@@ -542,18 +586,29 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
     <line x1="0" y1="700" x2="1400" y2="700"/><line x1="250" y1="0" x2="250" y2="900"/>
     <line x1="900" y1="0" x2="900" y2="900"/><line x1="1200" y1="0" x2="1200" y2="900"/>
   </svg>
-  <picture>
-    <source media="(max-width: 560px)" srcset="manimation-logo-cropped.png">
-    <img src="2nd manimation log.png" alt="Manimation" class="manimation-logo">
-  </picture>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-orb hero-orb-4"></div>
+  <div class="hero-orb hero-orb-5"></div>
+  <div class="hero-orb hero-orb-6"></div>
+  <div class="hero-orb hero-orb-7"></div>
+  <div class="hero-orb hero-orb-8"></div>
+  <div class="hero-orb hero-orb-9"></div>
+  <div class="hero-orb hero-orb-10"></div>
+  <div class="hero-orb hero-orb-11"></div>
+  <div class="hero-orb hero-orb-12"></div>
+  <div class="hero-orb hero-orb-13"></div>
+  <div class="hero-orb hero-orb-14"></div>
+  <div class="hero-orb hero-orb-15"></div>
+  <div class="hero-orb hero-orb-16"></div>
+  <div class="hero-orb hero-orb-17"></div>
+  <div class="hero-orb hero-orb-18"></div>
+  <div class="hero-orb hero-orb-19"></div>
+  <div class="hero-orb hero-orb-20"></div>
+  <img src="manimation-logo.png" alt="Manimation — Motion with Emotion" class="manimation-logo">
   <a href="motion-design-case-studies.html" class="cta-refined" aria-label="Explore motion design case studies">Explore Case Studies <span class="arrow">→</span></a>
   <div class="hnum">50+</div>
-  <div class="hbadge">
-    <div class="hbadge-line"></div>
-    <div class="hbadge-text">Motion Designer</div>
-    <div class="hbadge-sub">Motion Studio</div>
-    <div class="hbadge-line"></div>
-  </div>
 </section>
 
 <div class="mqw">
@@ -565,10 +620,10 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 <section class="about" id="about">
   <div>
     <div class="slabel">About</div>
-    <h2 class="ahead">Motion that <em>moves</em><br/>brands forward</h2>
-    <p class="abody">I'm a motion designer specializing in logo animation and high-end UI-based motion for digital products, startups, and modern brands. I create cinematic animations that bring identities to life and showcase apps, SaaS platforms, and services in a clean, premium, and engaging way.</p>
-    <p class="abody">My work ranges from dynamic logo animations and brand reveals to product-focused UI motion, including app-inspired transitions, dashboard showcases, micro-interactions, and onboarding flows. Whether the goal is to strengthen brand presence or highlight product functionality, I design motion that feels smooth, intentional, and visually refined.</p>
-    <p class="abody">With a strong foundation in timing, easing, and visual storytelling, I focus on creating animations that balance aesthetics with clarity — helping brands communicate their identity and digital experiences with elegance and impact.</p>
+    <h2 class="ahead">Motion that <em>moves</em><br/>markets forward</h2>
+    <p class="abody"><strong>Manimation</strong> is a motion design studio that transforms brands through the power of <span class="gold-highlight">motion with emotion</span>. We don't create animations—we craft <span class="gold-highlight">visual narratives</span> that breathe life into identities, captivate audiences, and leave lasting impressions that <span class="gold-highlight">move markets</span>.</p>
+    <p class="abody">We believe motion design is far more than aesthetics in motion. It's <span class="gold-highlight">strategic brand storytelling</span>—every frame, every transition, every movement serves a purpose. Whether through <span class="gold-highlight">cinematic logo reveals</span>, immersive UI experiences, or compelling product narratives, we create motion that speaks directly to audiences and strengthens <span class="gold-highlight">brand recall</span>. Our work empowers brands to communicate their essence with clarity, elegance, and <span class="gold-highlight">unforgettable impact</span>.</p>
+    <p class="abody">From dynamic logo animations and premium UI motion for digital products to social media content that <span class="gold-highlight">stops scrolls</span> and explainer videos that drive engagement, Manimation specializes in <span class="gold-highlight">motion that elevates brand presence</span>. We combine meticulous attention to timing, easing, and visual storytelling with <span class="gold-highlight">strategic creative direction</span>—delivering motion that doesn't just look beautiful, but genuinely <span class="gold-highlight">moves people and drives brand growth</span>.</p>
     <div class="pills">
       <span class="ptag">Logo Animation</span>
       <span class="ptag">UI / UX Animation</span>
@@ -808,7 +863,7 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
   <div class="video-grid-wrapper">
   <div class="vg" id="product3dGrid">
     <div class="vc" data-idx="0" data-deck="product3d" data-title="3D Soda Ad — Product Animation">
-      <video src="./3d_soda_ad.mp4" autoplay muted loop playsinline preload="metadata" loading="lazy"></video>
+      <video src="./3D_Animation_Soda_Ad_2.mp4" autoplay muted loop playsinline preload="metadata" loading="lazy"></video>
       <div class="vo"><div class="vt">3D Soda Ad</div><div class="vtg">3D Product Animation</div></div>
     </div>
     <div class="vc" data-idx="1" data-deck="product3d" data-title="Christian Dior Sneakers — 3D Product Ad">
@@ -1064,7 +1119,7 @@ var EXPLAINER=[
   {src:'./atb_explainer.mp4',title:'ATB — Explainer Animation'},
 ];
 var PRODUCT3D=[
-  {src:'./3d_soda_ad.mp4',title:'3D Soda Ad — Product Animation'},
+  {src:'./3D_Animation_Soda_Ad_2.mp4',title:'3D Soda Ad — Product Animation'},
   {src:'./christian_dior_sneakers_3d_ad.mp4',title:'Christian Dior Sneakers — 3D Product Ad'},
 ];
 var VIRAL=[
