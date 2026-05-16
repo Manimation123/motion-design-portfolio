@@ -308,16 +308,16 @@ A pricing section has been designed in `pricing_test.html` with the following st
 
 | Category | Price | Duration | Delivery | Includes |
 |----------|-------|----------|----------|----------|
-| **Logo Animation** | $15 – $50 | 5–15 sec | 1–4 days | 2D reveal, transparent BG, social formats, 2 revisions |
-| **UI Motion Ads** | From $80 | 15–45 sec | 3–7 days | Product showcase, screen recording + motion, music, 2 revisions |
+| **Logo Animation** | $15 – $30 | 5–15 sec | 1–4 days | 2D reveal, transparent BG, social formats, 2 revisions |
+| **UI Motion Ads** | From $80 | 15–45 sec | 3–7 days | Product showcase, screen recording + motion, music, 3 revisions |
 | **Explainer Videos** | From $180 | 45–90 sec | 7–12 days | Full storyboard, custom graphics, sound design, 3 revisions |
 | **Viral Reels** | From $50 | 15–60 sec | 2–4 days | Fast-paced editing, captions, multi-format, 2 revisions |
 
 ### Pricing Notes
-- **Payment**: Wise only (50% upfront, 50% on delivery)
+- **Payment**: 50% upfront, 50% on delivery
 - **Under $100 projects**: Full payment upfront
-- **Revisions**: 2 rounds included (additional: $25 each)
-- **Source files**: Available for +$30
+- **Revisions**: 2-3 rounds included depending on package
+- **Source files**: Available for +$10
 - **Bulk discounts**: 5+ videos = 10% off, 10+ videos = 15% off
 - **Files delivered**: MP4 (web), MOV (transparent for logos), social formats
 
