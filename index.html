@@ -271,6 +271,22 @@ nav ul a:hover{color:var(--gold);}
 .stn{font-family:'Cormorant Garamond',serif;font-size:2.7rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px;}
 .stl{font-size:.75rem;letter-spacing:.17em;text-transform:uppercase;color:var(--text-dim);}
 .aright{padding-top:75px;}
+
+/* FREE PACK SECTION */
+.fpack{display:none; padding:130px 60px; background:linear-gradient(to bottom, rgba(8,7,4,0.6), var(--black)); position:relative;}
+.fp-inner{max-width:1100px; margin:0 auto;}
+.fp-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:80px; align-items:center;}
+.fp-list{list-style:none; margin:30px 0;}
+.fp-list li{font-size:.9rem; color:var(--text-dim); padding:10px 0; display:flex; align-items:center; gap:15px; border-bottom:1px solid var(--surface2);}
+.fp-list li:last-child{border-bottom:none;}
+.fp-list li::before{content:'+'; color:var(--gold); font-family:'Syne', sans-serif; font-weight:700; font-size:1rem;}
+.fp-card{background:var(--surface); border:1px solid var(--surface2); padding:48px; position:relative; box-shadow:0 30px 60px rgba(0,0,0,0.3); border-radius:4px;}
+.fp-card::before{content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent);}
+.fp-form .form-field label{font-size:.65rem; color:var(--gold); letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:12px;}
+.fp-note{font-size:.65rem; color:var(--text-dim); margin-top:20px; text-align:center; letter-spacing:0.05em; line-height:1.5;}
+#fpSuccess{display:none; opacity:0; transition:opacity .4s;}
+#fpSuccess.visible{display:block; opacity:1;}
+
 .svc{list-style:none;}
 .svc li{border-top:1px solid var(--surface2);padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:.95rem;letter-spacing:.05em;color:var(--text);transition:color .3s;}
 .svc li:hover{color:var(--gold);}
@@ -539,6 +555,12 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
   .pricing-desc,.pdesc,.ctsub{margin-left:auto;margin-right:auto;max-width:100%;}
   .hscroll{left:24px;}
   .tool{margin:0 auto;}
+
+  .fp-grid{grid-template-columns:1fr; gap:44px;}
+  .fpack{padding:80px 24px;}
+  .fp-info{text-align:center;}
+  .fp-list li{justify-content:center;}
+  .fp-card{padding:32px 24px;}
 }
 @media(max-width:380px){
   .cta-refined{width:auto;max-width:calc(100vw - 56px);padding:11px 14px;font-size:.68rem;letter-spacing:.08em;}
@@ -692,10 +714,49 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
       <li>Social Media Motion <span>Content</span></li>
       <li>Typography Animation <span>Type</span></li>
       <li>SaaS / App UI Motion <span>Product</span></li>
-      <li>Free Pack (50 animated elements overlays) <span><a href="https://drive.google.com/drive/folders/1ocEDnYbGZQSVvtpmc_im2g7w5i-eXc07?usp=sharing" target="_blank" class="svc-cta" id="freePackDownload" aria-label="Download the free Manimation motion assets pack">Download <span class="free-pack-action">↓</span></a></span></li>
+      <li>Free Pack (50 animated elements overlays) <span><a href="#free-pack" class="svc-cta" id="freePackScroll" aria-label="Get the free Manimation motion assets pack">Get Access <span class="free-pack-action">↓</span></a></span></li>
     </ul>
     <div class="mascot-container">
       <img src="./about_me_mascot.png" alt="Manimation Mascot" class="mascot"/>
+    </div>
+  </div>
+</section>
+
+<section class="fpack" id="free-pack">
+  <div class="fp-inner">
+    <div class="slabel">Exclusive Assets</div>
+    <div class="fp-grid">
+      <div class="fp-info">
+        <h2 class="ahead">The Motion Designer's<br/><em>Essential Pack</em></h2>
+        <p class="abody">Elevate your video projects with our curated collection of 50+ motion animated assets.— ready for your next masterpiece.</p>
+        <ul class="fp-list">
+          <li>Text Reactions</li>
+          <li>Shapes Animations</li>
+          <li>Basic Essential Transitions</li>
+          <li>Animated Backgrounds</li>
+          <li>Bonus: 3D Animated Elements</li>
+        </ul>
+      </div>
+      <div class="fp-card">
+        <form id="freePackForm" class="fp-form">
+          <div class="form-field">
+            <label for="fpName">Name</label>
+            <input type="text" id="fpName" placeholder="Your full name" required>
+          </div>
+          <div class="form-field">
+            <label for="fpEmail">Email Address</label>
+            <input type="email" id="fpEmail" placeholder="you@example.com" required> 
+          </div>
+          <button type="submit" id="fpSubmit" class="cta-refined" style="width:100%; animation:none; opacity:1; margin-top:0; padding:18px;">
+            Unlock Download <span class="arrow">→</span>
+          </button>
+          <p class="fp-note">Instant download link will be provided upon submission.</p>
+        </form>
+        <div id="fpSuccess" class="success-message" style="text-align:center; padding-top:0;">
+          <p style="margin-bottom:20px;">Success! Your download is starting...</p>
+          <a href="https://drive.google.com/drive/folders/1ocEDnYbGZQSVvtpmc_im2g7w5i-eXc07?usp=sharing" target="_blank" class="svc-cta">Click here if it doesn't start</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1177,19 +1238,69 @@ document.querySelectorAll('.video-toggle').forEach(function(btn){
   });
 });
 
-// FREE PACK DOWNLOAD
-var freePackButton=document.getElementById('freePackDownload');
-if(freePackButton){freePackButton.addEventListener('click',function(){
-  var action=freePackButton.querySelector('.free-pack-action');
-  var originalText=action?action.textContent:'Download';
-  
-  if(action){
-    action.textContent='Opening...';
-    setTimeout(function(){
-      action.textContent=originalText;
-    },2500);
+// FREE PACK LOGIC
+var fpackSection = document.getElementById('free-pack');
+var fpForm = document.getElementById('freePackForm');
+var fpSuccess = document.getElementById('fpSuccess');
+var fpSubmit = document.getElementById('fpSubmit');
+var freePackScroll = document.getElementById('freePackScroll');
+var fpDownloadLink = "https://drive.google.com/drive/folders/1ocEDnYbGZQSVvtpmc_im2g7w5i-eXc07?usp=sharing";
+
+function revealFreePack(e) {
+  if(e) e.preventDefault();
+  if(fpackSection) {
+    fpackSection.style.display = 'block';
+    fpackSection.scrollIntoView({ behavior: 'smooth' });
   }
-});}
+}
+
+if(freePackScroll) freePackScroll.addEventListener('click', revealFreePack);
+
+if(fpForm){
+  fpForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var name = document.getElementById('fpName').value.trim();
+    var email = document.getElementById('fpEmail').value.trim();
+    if(!email || !name) return;
+
+    fpSubmit.disabled = true;
+    fpSubmit.textContent = 'Unlocking...';
+
+    try {
+      var response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: email,
+          name: name,
+          projectType: "Free Pack Download",
+          message: "User " + name + " (" + email + ") requested access to the 50 element motion pack assets."
+        })
+      });
+
+      if(!response.ok) {
+        var errorMsg = 'Failed to send request';
+        try {
+          var errorData = await response.json();
+          errorMsg = errorData.error || errorMsg;
+        } catch(e) {
+          // If the server returns HTML (like a 404 page), show the status code instead
+          errorMsg = 'Server Error ' + response.status + ': ' + response.statusText;
+        }
+        throw new Error(errorMsg);
+      }
+
+      fpForm.style.display = 'none';
+      fpSuccess.classList.add('visible');
+      window.open(fpDownloadLink, '_blank');
+    } catch(err) {
+      console.error(err);
+      alert('Submission failed: ' + err.message);
+      fpSubmit.disabled = false;
+      fpSubmit.textContent = 'Unlock Download →';
+    }
+  });
+}
 
 var modal=document.getElementById('contactModal');
 var startButton=document.getElementById('startProjectButton');
@@ -1260,8 +1371,14 @@ if(sendButton){sendButton.addEventListener('click',async function(){
       body:JSON.stringify(payload),
     });
     if(!response.ok){
-      var error=await response.json().catch(function(){return null;});
-      throw new Error(error?.error||'Request failed.');
+      var errorMsg = 'Request failed';
+      try {
+        var errorData = await response.json();
+        errorMsg = errorData.error || errorMsg;
+      } catch(e) {
+        errorMsg = 'Server Error ' + response.status + ': ' + response.statusText;
+      }
+      throw new Error(errorMsg);
     }
     step2.classList.remove('active');
     successMessage.classList.add('visible');
