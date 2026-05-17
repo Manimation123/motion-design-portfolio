@@ -236,11 +236,15 @@ nav ul a:hover{color:var(--gold);}
   opacity:0;
   transform:translateY(-20px);
   margin-top:30px;
+  visibility: hidden;
+  pointer-events: none;
 }
 .video-grid-wrapper.open{
   max-height:3000px;
   opacity:1;
   transform:translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* MARQUEE */
@@ -1145,25 +1149,43 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 <script>
 // VIDEO LAZY LOADING — only load and play when visible
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var activeLoads = 0;
+var maxSimultaneousLoads = isMobile ? 2 : 4;
+
 var videoObserver=new IntersectionObserver(function(entries){
-  entries.forEach(function(entry, index){
+  entries.forEach(function(entry){
     var v=entry.target;
+    var wrapper = v.closest('.video-grid-wrapper');
+    
+    // Only load if the section is actually open
+    var isSectionOpen = !wrapper || wrapper.classList.contains('open');
+
     if(entry.isIntersecting){
-      // Stagger loading to prevent bandwidth saturation on mobile
-      setTimeout(function(){
-        if(!entry.isIntersecting) return;
-        if(v.dataset.src){
-          v.src=v.dataset.src;
-          v.removeAttribute('data-src');
-        }
-        var p=v.play();
-        if(p!==undefined){p.catch(function(){});}
-      }, index * (isMobile ? 150 : 50));
+      if(!isSectionOpen) return;
+      
+      if(v.dataset.src && activeLoads < maxSimultaneousLoads){
+        loadVideo(v);
+      } else if (!v.dataset.src) {
+        v.play().catch(function(){});
+      }
     }else{
       v.pause();
     }
   });
-},{rootMargin: isMobile ? '80px' : '150px',threshold:0.1});
+},{rootMargin: isMobile ? '50px' : '100px',threshold:0.1});
+
+function loadVideo(v) {
+  if(!v.dataset.src) return;
+  activeLoads++;
+  v.src = v.dataset.src;
+  v.removeAttribute('data-src');
+  v.load(); // Force initial handshake
+  v.oncanplay = function() {
+    activeLoads--;
+    v.play().catch(function(){});
+    v.oncanplay = null;
+  };
+}
 
 document.querySelectorAll('.vc video').forEach(function(v){
   v.muted=true;v.loop=true;v.playsInline=true;
