@@ -219,7 +219,7 @@ website portfolio/
 1. App Interaction
 2. Web Interaction
 
-### Explainer Motion (2 videos) — Landscape
+### Short Motion Graphics Explainers (2 videos) — Landscape
 1. Claude UI
 2. Spark
 
