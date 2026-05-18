@@ -209,12 +209,11 @@ website portfolio/
 10. Orbix — 2D
 11. Serelle — Typography
 
-### UI/UX Motion (5 videos)
+### UI/UX Motion (4 videos)
 1. Quick Cart (wide)
 2. Nexa Bank
 3. Google Drive
 4. Uber
-5. Spark (wide)
 
 ### Interaction Design (2 videos) — Portrait
 1. App Interaction
@@ -222,7 +221,7 @@ website portfolio/
 
 ### Explainer Motion (2 videos) — Landscape
 1. Codex UI
-2. ATB
+2. Spark
 
 ### 3D Product Ads (2 videos) — Landscape
 1. 3D Soda Ad

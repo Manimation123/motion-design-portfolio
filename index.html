@@ -324,9 +324,7 @@ nav ul a:hover{color:var(--gold);}
 .vc::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--surface) 0%,var(--surface2) 50%,var(--surface) 100%);background-size:200% 100%;animation:shimmer 1.5s infinite;z-index:0;}
 .vc video{position:relative;z-index:1;}
 @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
-/* Portrait videos (Interaction and Viral sections) */
-#interactionGrid{grid-template-columns:repeat(2,1fr);max-width:600px;}
-#interactionGrid .vc{aspect-ratio:9/16;}
+/* Portrait videos (Viral section) */
 #viralGrid{grid-template-columns:repeat(3,1fr);max-width:900px;}
 #viralGrid .vc{aspect-ratio:9/16;}
 .vc video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94);}
@@ -527,7 +525,6 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 }
 @media(max-width:560px){
   .vg,.ug{grid-template-columns:1fr;}
-  #interactionGrid{grid-template-columns:1fr;max-width:320px;}
   .hero-orb{max-width:24px;max-height:24px;box-shadow:0 0 10px rgba(201,168,76,0.15)!important;}
   .hero-orb-4,.hero-orb-8,.hero-orb-16,.hero-orb-20{display:none;}
   .free-pack-cta{top:76px;width:calc(100% - 48px);max-width:360px;justify-content:center;padding:10px 12px;gap:10px;}
@@ -593,7 +590,6 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
   <ul>
     <li><a href="#logos">Logo Work</a></li>
     <li><a href="#uiux">UI / UX</a></li>
-    <li><a href="#interaction">Interaction</a></li>
     <li><a href="#explainer">Explainer</a></li>
     <li><a href="#product3d">3D Product Ads</a></li>
     <li><a href="#viral">Viral</a></li>
@@ -839,7 +835,7 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
       <div class="slabel">Apps · Startups · UI Motion</div>
       <h2 class="ph">Apps, Startups,<br/><em>User Interface</em><br/>Motion Graphics</h2>
     </div>
-    <div class="pn">5</div>
+    <div class="pn">4</div>
   </div>
   <p class="pdesc">Beyond logos, I design high-end UI motion crafted for product storytelling — cinematic interface transitions, app-inspired visuals, SaaS dashboard animations, and social-ready product showcases. Each motion sequence is built to communicate features with clarity, elegance, and a premium feel.</p>
   <button class="video-toggle">See Examples <span class="arrow">▼</span></button>
@@ -861,46 +857,16 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
       <video data-src="./uber%20animation.mp4" muted loop playsinline preload="none"></video>
       <div class="vo"><div class="vt">Uber</div><div class="vtg">App UI Motion</div></div>
     </div>
-    <div class="vc" data-idx="4" data-deck="ui" data-title="Spark — UI Animation v2">
-      <video data-src="./spark%20version%202.mp4" muted loop playsinline preload="none"></video>
-      <div class="vo"><div class="vt">Spark</div><div class="vtg">UI / UX Animation</div></div>
-    </div>
   </div>
   </div>
 </section>
-<div class="divider"></div>
-
-<section class="portdark" id="interaction">
-  <div class="phdr">
-    <div>
-      <div class="slabel">Interaction Design</div>
-      <h2 class="ph">UI / UX Interaction<br/><em>Animation</em><br/>( App / Web )</h2>
-    </div>
-    <div class="pn">2</div>
-  </div>
-  <p class="pdesc">Crafted interaction animations for both mobile apps and web platforms — smooth, purposeful micro-interactions and transitions that elevate the user experience and make digital interfaces feel truly alive.</p>
-  <button class="video-toggle">See Examples <span class="arrow">▼</span></button>
-  <div class="video-grid-wrapper">
-  <div class="vg" id="interactionGrid">
-    <div class="vc" data-idx="0" data-deck="interaction" data-title="App — UI/UX Interaction Animation">
-      <video data-src="./app_ux_animation.mp4" muted loop playsinline preload="none"></video>
-      <div class="vo"><div class="vt">App Interaction</div><div class="vtg">UI / UX · Mobile</div></div>
-    </div>
-    <div class="vc" data-idx="1" data-deck="interaction" data-title="Web — UI/UX Interaction Animation">
-      <video data-src="./web_ux_animation.mp4" muted loop playsinline preload="none"></video>
-      <div class="vo"><div class="vt">Web Interaction</div><div class="vtg">UI / UX · Web</div></div>
-    </div>
-  </div>
-  </div>
-</section>
-
 <div class="divider"></div>
 
 <section class="portdark" id="explainer">
   <div class="phdr">
     <div>
       <div class="slabel">Explainer Videos</div>
-      <h2 class="ph">Explainer Motion<br/><em>Design</em></h2>
+      <h2 class="ph">short motion graphics<br/><em>explainers</em></h2>
     </div>
     <div class="pn">2</div>
   </div>
@@ -912,9 +878,9 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
       <video data-src="./claude_explainer.mp4" muted loop playsinline preload="none"></video>
       <div class="vo"><div class="vt">Claude UI</div><div class="vtg">Product Explainer</div></div>
     </div>
-    <div class="vc" data-idx="1" data-deck="explainer" data-title="ATB — Explainer Animation">
-      <video data-src="./atb_explainer.mp4" muted loop playsinline preload="none"></video>
-      <div class="vo"><div class="vt">ATB</div><div class="vtg">Brand Explainer</div></div>
+    <div class="vc" data-idx="1" data-deck="explainer" data-title="Spark — UI Animation v2">
+      <video data-src="./spark%20version%202.mp4" muted loop playsinline preload="none"></video>
+      <div class="vo"><div class="vt">Spark</div><div class="vtg">UI / UX Animation</div></div>
     </div>
   </div>
   </div>
@@ -1207,13 +1173,9 @@ var LOGO=[
   {src:'./Logo%20Animation%20Orbix%2011.mp4',title:'Orbix — Logo Animation'},
   {src:'./serelle%20typo%20animation.mp4',title:'Serelle — Typography Animation'},
 ];
-var INTERACTION=[
-  {src:'./app_ux_animation.mp4',title:'App — UI/UX Interaction Animation'},
-  {src:'./web_ux_animation.mp4',title:'Web — UI/UX Interaction Animation'},
-];
 var EXPLAINER=[
   {src:'./claude_explainer.mp4',title:'Claude UI — Explainer Animation'},
-  {src:'./atb_explainer.mp4',title:'ATB — Explainer Animation'},
+  {src:'./spark%20version%202.mp4',title:'Spark — UI Animation v2'},
 ];
 var PRODUCT3D=[
   {src:'./3D_Animation_Soda_Ad_2.mp4',title:'3D Soda Ad — Product Animation'},
@@ -1229,13 +1191,12 @@ var UI=[
   {src:'./nexa%20banka%20animation%205.mp4',title:'Nexa Bank — UI Animation'},
   {src:'./Gg%20Drive%20ui%20animation.mp4',title:'Google Drive — UI Animation'},
   {src:'./uber%20animation.mp4',title:'Uber — UI Animation'},
-  {src:'./spark%20version%202.mp4',title:'Spark — UI Animation v2'},
 ];
 var deck='logo', ci=0;
 var lb=document.getElementById('lb');
 var lbV=document.getElementById('lbV');
 var lbT=document.getElementById('lbT');
-function getDeck(){return deck==='logo'?LOGO:deck==='interaction'?INTERACTION:deck==='explainer'?EXPLAINER:deck==='viral'?VIRAL:deck==='product3d'?PRODUCT3D:UI;}
+function getDeck(){return deck==='logo'?LOGO:deck==='explainer'?EXPLAINER:deck==='viral'?VIRAL:deck==='product3d'?PRODUCT3D:UI;}
 function openLB(d,i){deck=d;ci=i;var a=getDeck();lbV.src=a[i].src;lbT.textContent=a[i].title;lb.classList.add('open');lbV.play();}
 function closeLB(){lb.classList.remove('open');lbV.pause();lbV.src='';}
 function navLB(dir){var a=getDeck();ci=(ci+dir+a.length)%a.length;lbV.src=a[ci].src;lbT.textContent=a[ci].title;lbV.play();}
