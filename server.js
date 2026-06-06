@@ -65,7 +65,7 @@ function sendJson(res, statusCode, payload) {
   res.end(body);
 }
 
-function serveFile(filePath, res) {
+function serveFile(filePath, req, res) {
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
       res.writeHead(404, {'Content-Type': 'text/plain'});
@@ -74,9 +74,40 @@ function serveFile(filePath, res) {
 
     const ext = path.extname(filePath).toLowerCase();
     const type = mimeTypes[ext] || 'application/octet-stream';
+    const isVideo = type.startsWith('video/');
+    const cacheControl = isVideo || ['.png', '.jpg', '.jpeg', '.webp', '.svg'].includes(ext)
+      ? 'public, max-age=31536000, immutable'
+      : 'no-cache';
+
+    if (isVideo && req.headers.range) {
+      const range = req.headers.range;
+      const parts = range.replace(/bytes=/, '').split('-');
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+
+      if (Number.isNaN(start) || Number.isNaN(end) || start >= stats.size || end >= stats.size) {
+        res.writeHead(416, {
+          'Content-Range': `bytes */${stats.size}`,
+          'Accept-Ranges': 'bytes',
+        });
+        return res.end();
+      }
+
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${stats.size}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': end - start + 1,
+        'Content-Type': type,
+        'Cache-Control': cacheControl,
+      });
+      return fs.createReadStream(filePath, {start, end}).pipe(res);
+    }
+
     res.writeHead(200, {
       'Content-Type': type,
-      'Cache-Control': 'no-cache',
+      'Content-Length': stats.size,
+      'Accept-Ranges': isVideo ? 'bytes' : 'none',
+      'Cache-Control': cacheControl,
     });
     fs.createReadStream(filePath).pipe(res);
   });
@@ -164,7 +195,7 @@ const server = http.createServer((req, res) => {
       return res.end('Forbidden');
     }
 
-    return serveFile(filePath, res);
+    return serveFile(filePath, req, res);
   }
 
   res.writeHead(405, {'Content-Type': 'text/plain'});
