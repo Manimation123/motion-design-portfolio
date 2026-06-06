@@ -301,7 +301,7 @@ website portfolio/
 
 ## Pricing Section (In Development)
 
-A pricing section has been designed in `pricing_test.html` with the following structure:
+A pricing section has been designed in `pricing.html` with the following structure:
 
 ### Pricing Categories (4 tiers)
 
@@ -321,7 +321,7 @@ A pricing section has been designed in `pricing_test.html` with the following st
 - **Files delivered**: MP4 (web), MOV (transparent for logos), social formats
 
 ### Integration Status
-- ✅ Design complete in `pricing_test.html`
+- ✅ Design complete in `pricing.html`
 - ✅ FAQ section included
 - ⏳ Pending: Integration into `index.html`
 - ⏳ Pending: Add `#pricing` to navigation
