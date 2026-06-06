@@ -320,9 +320,8 @@ nav ul a:hover{color:var(--gold);}
 .vg{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
 .ug{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;grid-auto-flow:dense;align-items:start;}
 .ug .wide{grid-column:span 2;}
-.vc{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:16/9;cursor:pointer;}
+.vc{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:16/9;}
 .vc::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--surface) 0%,var(--surface2) 50%,var(--surface) 100%);background-size:200% 100%;animation:shimmer 1.5s infinite;z-index:0;}
-.vc.is-ready::before{opacity:0;animation:none;}
 .vc video{position:relative;z-index:1;}
 @keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
 /* Portrait videos (Viral section) */
@@ -1116,103 +1115,48 @@ footer{border-top:1px solid var(--surface2);padding:34px 60px;display:flex;justi
 
 
 <script>
-// VIDEO LAZY LOADING - load only videos inside open sections, with a small queue.
-var isMobile = window.matchMedia('(max-width: 700px), (hover: none), (pointer: coarse)').matches;
-var saveData = !!(navigator.connection && navigator.connection.saveData);
-var videoQueue = [];
-var activeVideoLoads = 0;
-var maxVideoLoads = isMobile ? 1 : 2;
+// VIDEO LAZY LOADING — only load and play when visible
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var activeLoads = 0;
+var maxSimultaneousLoads = isMobile ? 2 : 4;
 
 var videoObserver=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
     var v=entry.target;
-    v.dataset.visible = entry.isIntersecting ? '1' : '0';
+    var wrapper = v.closest('.video-grid-wrapper');
+    
+    // Only load if the section is actually open
+    var isSectionOpen = !wrapper || wrapper.classList.contains('open');
+
     if(entry.isIntersecting){
-      enqueueVideo(v);
+      if(!isSectionOpen) return;
+      
+      if(v.dataset.src && activeLoads < maxSimultaneousLoads){
+        loadVideo(v);
+      } else if (!v.dataset.src) {
+        v.play().catch(function(){});
+      }
     }else{
-      pauseVideo(v);
+      v.pause();
     }
   });
-},{rootMargin:isMobile?'80px':'180px',threshold:0.08});
+},{rootMargin: isMobile ? '50px' : '100px',threshold:0.1});
 
-function getVideoCard(v){return v.closest('.vc');}
-function getVideoWrapper(v){return v.closest('.video-grid-wrapper');}
-function isNearViewport(v){
-  var card=getVideoCard(v);
-  if(!card) return false;
-  var margin=isMobile?100:220;
-  var rect=card.getBoundingClientRect();
-  return rect.bottom>=-margin && rect.top<=window.innerHeight+margin;
-}
-function canLoadVideo(v){
-  var wrapper=getVideoWrapper(v);
-  var card=getVideoCard(v);
-  var isVisible=v.dataset.visible==='1' || isNearViewport(v);
-  return !saveData && isVisible && (!wrapper || wrapper.classList.contains('open')) && (!card || card.style.display!=='none');
-}
-function enqueueVideo(v){
-  if(!canLoadVideo(v)) return;
-  if(!v.dataset.src){
-    playVideo(v);
-    return;
-  }
-  if(videoQueue.indexOf(v)===-1) videoQueue.push(v);
-  runVideoQueue();
-}
-function runVideoQueue(){
-  if(activeVideoLoads>=maxVideoLoads || videoQueue.length===0) return;
-  var v=videoQueue.shift();
-  if(!canLoadVideo(v)){
-    runVideoQueue();
-    return;
-  }
-  loadVideo(v);
-}
 function loadVideo(v) {
-  if(!v.dataset.src){
-    playVideo(v);
-    return;
-  }
-  activeVideoLoads++;
-  v.preload='metadata';
-  v.src=v.dataset.src;
+  if(!v.dataset.src) return;
+  activeLoads++;
+  v.src = v.dataset.src;
   v.removeAttribute('data-src');
-  v.load();
-  var done=function(){
-    activeVideoLoads=Math.max(0,activeVideoLoads-1);
-    v.removeEventListener('loadeddata',done);
-    v.removeEventListener('canplay',done);
-    v.removeEventListener('error',done);
-    if(v.readyState>=2){
-      var card=getVideoCard(v);
-      if(card) card.classList.add('is-ready');
-      playVideo(v);
-    }
-    runVideoQueue();
+  v.load(); // Force initial handshake
+  v.oncanplay = function() {
+    activeLoads--;
+    v.play().catch(function(){});
+    v.oncanplay = null;
   };
-  v.addEventListener('loadeddata',done,{once:true});
-  v.addEventListener('canplay',done,{once:true});
-  v.addEventListener('error',done,{once:true});
-}
-function playVideo(v){
-  if(!canLoadVideo(v)) return;
-  v.play().then(function(){
-    var card=getVideoCard(v);
-    if(card) card.classList.add('is-playing');
-  }).catch(function(){});
-}
-function pauseVideo(v){
-  v.pause();
-  var card=getVideoCard(v);
-  if(card) card.classList.remove('is-playing');
-}
-function unloadVideo(v){
-  pauseVideo(v);
-  videoQueue=videoQueue.filter(function(item){return item!==v;});
 }
 
 document.querySelectorAll('.vc video').forEach(function(v){
-  v.muted=true;v.loop=true;v.playsInline=true;v.preload='none';
+  v.muted=true;v.loop=true;v.playsInline=true;
   videoObserver.observe(v);
 });
 
@@ -1253,9 +1197,8 @@ var deck='logo', ci=0;
 var lb=document.getElementById('lb');
 var lbV=document.getElementById('lbV');
 var lbT=document.getElementById('lbT');
-lbV.preload='metadata';
 function getDeck(){return deck==='logo'?LOGO:deck==='explainer'?EXPLAINER:deck==='viral'?VIRAL:deck==='product3d'?PRODUCT3D:UI;}
-function openLB(d,i){deck=d;ci=i;var a=getDeck();document.querySelectorAll('.vc video').forEach(function(v){pauseVideo(v);});lbV.src=a[i].src;lbT.textContent=a[i].title;lb.classList.add('open');lbV.play();}
+function openLB(d,i){deck=d;ci=i;var a=getDeck();lbV.src=a[i].src;lbT.textContent=a[i].title;lb.classList.add('open');lbV.play();}
 function closeLB(){lb.classList.remove('open');lbV.pause();lbV.src='';}
 function navLB(dir){var a=getDeck();ci=(ci+dir+a.length)%a.length;lbV.src=a[ci].src;lbT.textContent=a[ci].title;lbV.play();}
 document.querySelectorAll('.vc').forEach(function(c){
@@ -1266,7 +1209,6 @@ document.getElementById('lbPrev').onclick=function(){navLB(-1);};
 document.getElementById('lbNext').onclick=function(){navLB(1);};
 lb.addEventListener('click',function(e){if(e.target===lb)closeLB();});
 document.addEventListener('keydown',function(e){
-  if(!lb.classList.contains('open')) return;
   if(e.key==='Escape')closeLB();
   if(e.key==='ArrowLeft')navLB(-1);
   if(e.key==='ArrowRight')navLB(1);
@@ -1276,20 +1218,12 @@ document.addEventListener('keydown',function(e){
 document.querySelectorAll('.video-toggle').forEach(function(btn){
   btn.addEventListener('click',function(){
     var wrapper=this.nextElementSibling;
-    var isOpen=wrapper.classList.toggle('open');
-    this.classList.toggle('active',isOpen);
-    if(isOpen){
+    this.classList.toggle('active');
+    wrapper.classList.toggle('open');
+    if(wrapper.classList.contains('open')){
       this.innerHTML='Hide Examples ▼';
     }else{
       this.innerHTML='See Examples ▼';
-    }
-    if(isOpen){
-      setTimeout(function(){
-        wrapper.querySelectorAll('video').forEach(function(v){enqueueVideo(v);});
-      },80);
-    }
-    if(!isOpen){
-      wrapper.querySelectorAll('video').forEach(function(v){unloadVideo(v);});
     }
   });
 });
@@ -1461,11 +1395,7 @@ document.querySelectorAll('.fb').forEach(function(btn){
     var f=this.dataset.f;
     document.querySelectorAll('#logoGrid .vc').forEach(function(v){
       if(f==='all'||v.dataset.cat===f){v.style.display='block';}
-      else{
-        v.style.display='none';
-        var video=v.querySelector('video');
-        if(video) unloadVideo(video);
-      }
+      else{v.style.display='none';}
     });
   });
 });
